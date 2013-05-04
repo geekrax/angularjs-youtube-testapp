@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.controllers', 'myApp.filters', 'myApp.services', 'myApp.directives'])
+angular.module('pocketYoutube', ['pocketYoutube.controllers', 'pocketYoutube.filters', 'pocketYoutube.services', 'pocketYoutube.directives'])
 
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
