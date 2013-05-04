@@ -1,5 +1,17 @@
 <div class="container">
     <div class="hero-unit">
-        <h1 ng-bind="message"></h1>
+        <h1>{{welcome_message}}</h1>
+    </div>
+    <div ng-repeat="video in videos" class="row">
+    		<div class="span4">
+    			<img ng-src="{{video.thumbnail.sqDefault}}" />
+    		</div>
+    		<div class="span8">
+    			<b>{{video.title}} - posted by : <a href="http://youtube.com/{{video.uploader}}">{{video.uploader}}</a></b>
+    			<p>{{video.description}}</p>
+    			<p>Posted on : {{video.uploaded}}</p>
+    			<p>Likes : {{video.likeCount}}</p>
+    			<p>views : {{video.viewCount}}</p>
+    		</div>
     </div>
 </div>
