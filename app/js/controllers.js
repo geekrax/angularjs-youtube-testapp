@@ -17,6 +17,6 @@ angular.module('pocketYoutube.controllers', [])
     	$scope.videos.push(video.data.items[0]);
     });
   });
- 
+  $scope.orderProperty = "-uploaded";
 
 }]);

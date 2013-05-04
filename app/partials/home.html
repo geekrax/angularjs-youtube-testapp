@@ -2,7 +2,7 @@
     <div class="hero-unit">
         <h1>{{welcome_message}}</h1>
     </div>
-    <div ng-repeat="video in videos" class="row">
+    <div ng-repeat="video in videos | orderBy:orderProperty" class="row">
     		<div class="span4">
     			<img ng-src="{{video.thumbnail.sqDefault}}" />
     		</div>
