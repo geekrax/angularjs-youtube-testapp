@@ -39,4 +39,8 @@ angular.module('pocketYoutube.controllers', [])
     console.log("play called");
     $scope.playUrl = url;
   }
+
+  $scope.delete = function(id){
+    $scope.videos = youtubeService.delete(id);
+  }
 }]);

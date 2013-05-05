@@ -30,6 +30,16 @@ factory('youtubeService', ['$http', 'localStorageService', 'youtubeApi', functio
       return result;
     }
 
+    this.delete = function(id){
+      var videosList = this.getAll();
+      videosList.forEach(function(video,index) {
+        console.log(index);
+        if(video.id == id)
+          videosList.splice(index,1);
+      });
+      localStorageService.add('youtube-videos', angular.toJson(videosList));
+      return videosList;
+    }
 
     this.getAll = function() {
       var videosList = angular.fromJson(localStorageService.get('youtube-videos'));
@@ -39,6 +49,8 @@ factory('youtubeService', ['$http', 'localStorageService', 'youtubeApi', functio
       }
       return videosList;
     }
+
+
 
   }
   return new youtubeService();
