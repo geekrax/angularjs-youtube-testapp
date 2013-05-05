@@ -35,5 +35,8 @@ angular.module('pocketYoutube.controllers', [])
 
   }
   $scope.orderProperty = "-uploaded";
-
+  $scope.play=function(url){
+    console.log("play called");
+    $scope.playUrl = url;
+  }
 }]);

@@ -4,21 +4,39 @@
     </div>
     <div class="container">
         <div class="span12 row">
-            Enter youtube video Url here : <input type="text" ng-model="videoUrl" placeholder="http://youtube.com/watch?v=XXXXXXXXXX"/><a class="btn btn-primary" ng-click="addToList(videoUrl);videoUrl='';" ng-show="videoUrl.length" >Add to list</a>
+            <div class="form-inline">
+                <input type="text" ng-model="videoUrl" placeholder="Enter youtube url..." class="video-url-field span10"/>
+                <button class="btn add-btn" ng-click="addToList(videoUrl);videoUrl='';">
+                    <i class="icon-plus"></i>Add
+                </button>
+            </div>  
             <div class="alert error" ng-show="invalidUrl">INVALID URL!</div><br>
             <div class="alert error" ng-show="videoExist">This video already exist in your list !</div><br>
         </div>
     </div>
-    <div ng-repeat="video in videos | orderBy:orderProperty" class="row">
-    		<div class="span4">
-    			<img ng-src="{{video.thumbnail.sqDefault}}" />
+    <div ng-repeat="video in videos | orderBy:orderProperty" class="row single-video">
+            <div class="span4">
+    			<img ng-src="{{video.thumbnail.hqDefault}}" />
     		</div>
     		<div class="span8">
-    			<b>{{video.title}} - posted by : <a href="http://youtube.com/{{video.uploader}}">{{video.uploader}}</a></b>
+    			<b><a ng-href="{{video.player.default}}" target="_blank">{{video.title}}</a> - <a href="http://youtube.com/{{video.uploader}}"><i class="icon-user"></i>{{video.uploader}}</a></b>
     			<p>{{video.description}}</p>
-    			<p>Posted on : {{video.uploaded}}</p>
-    			<p>Likes : {{video.likeCount}}</p>
-    			<p>views : {{video.viewCount}}</p>
+    			<p><i class="icon-plus"></i>Posted on : {{video.uploaded}}</p>
+    			<p><i class="icon-thumbs-up"></i>Likes : {{video.likeCount}}</p>
+    			<p><i class="icon-eye-open"></i>views : {{video.viewCount}}</p>
+                <p>
+                    <a class="btn add-btn play" ng-click="play(video.content.5)"><i class="icon-play-circle"></i>Play</a>
+                    <a ng-href="{{video.player.default}}" target="blank" class="btn add-btn play" href=""><i class="icon-arrow-right"></i>Go to video</a>
+                    <a class="btn btn-danger">
+                        <i class="icon-trash"></i>
+                    </a>
+                </p>
     		</div>
+    </div>
+    <div class="video-wrap" ng-show="playUrl.length" style="">
+        <div class="player">
+            <a class="icon-remove-sign icon-2x close-player" ng-click="playUrl='';"></a>
+            <iframe ng-src="{{playUrl}}" src="{{playUrl}}" frameborder="0"></iframe>
+        </div>
     </div>
 </div>
