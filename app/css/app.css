@@ -1,9 +1,19 @@
+html,body{
+  height: 100%;
+}
+.main-container{
+  background: white;
+  padding: 0 20px 50px 20px;
+}
 .add-btn i.icon-plus{
   margin-right: 5px;
   font-size: 30px;
 }
 i[class*="icon-"]{
   margin-right: 5px;
+}
+body{
+  background: #34495e !important;
 }
 .add-btn {
   background-color: hsl(170, 48%, 41%) !important;
@@ -43,6 +53,10 @@ input.video-url-field{
 .add-btn.play{
   font-size: 16px;
   height: auto;
+}
+.video-description{
+  font-style: italic;
+  color: #999;
 }
 .video-wrap {
   width: 100%;

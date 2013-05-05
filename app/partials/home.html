@@ -1,26 +1,26 @@
 <div class="container">
     <div class="hero-unit">
-        <h1>{{welcome_message}}</h1>
+        <h1><i class="icon-th-list"></i> Pocket YouTube</h1>
     </div>
     <div class="container">
         <div class="span12 row">
             <div class="form-inline">
-                <input type="text" ng-model="videoUrl" placeholder="Enter youtube url..." class="video-url-field span10"/>
+                <input type="text" ng-model="videoUrl" autofocus="autofocus" placeholder="Enter youtube url..." class="video-url-field span10"/>
                 <button class="btn add-btn" ng-click="addToList(videoUrl);videoUrl='';">
                     <i class="icon-plus"></i>Add
                 </button>
             </div>  
-            <div class="alert error" ng-show="invalidUrl">INVALID URL!</div><br>
+            <div class="alert error" ng-show="invalidUrl">Invalid URL !</div><br>
             <div class="alert error" ng-show="videoExist">This video already exist in your list !</div><br>
         </div>
     </div>
-    <div ng-repeat="video in videos | orderBy:orderProperty" class="row single-video">
+    <div ng-repeat="video in videos | orderBy:orderProperty" class="row-fluid single-video">
             <div class="span4">
     			<img ng-src="{{video.thumbnail.hqDefault}}" />
     		</div>
     		<div class="span8">
     			<b><a ng-href="{{video.player.default}}" target="_blank">{{video.title}}</a> - <a href="http://youtube.com/{{video.uploader}}"><i class="icon-user"></i>{{video.uploader}}</a></b>
-    			<p>{{video.description}}</p>
+    			<p class="video-description">{{video.description}}</p>
     			<p><i class="icon-plus"></i>Posted on : {{video.uploaded}}</p>
     			<p><i class="icon-thumbs-up"></i>Likes : {{video.likeCount}}</p>
     			<p><i class="icon-eye-open"></i>views : {{video.viewCount}}</p>
