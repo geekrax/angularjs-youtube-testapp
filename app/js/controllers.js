@@ -4,19 +4,36 @@
 
 angular.module('pocketYoutube.controllers', [])
 
-.controller('HomeCtrl', ['$scope','$http', function($scope,$http) {
-  
-  //Set welcome message (just a simple for test)
-  $scope.welcome_message = 'Welcome to Pocket Youtube';
+.controller('HomeCtrl', ['$scope', '$http', 'youtubeService', function($scope, $http, youtubeService) {
 
-  // Initially, use static data
-  // Reference : http://docs.angularjs.org/tutorial/step_05
-  $http.get('videos/list.json').success(function(data) {
-  	$scope.videos = [];
-    data.forEach(function(video){
-    	$scope.videos.push(video.data.items[0]);
-    });
-  });
+  $scope.videos = youtubeService.getAll();
+  $scope.videoExist = false;
+  
+  $scope.addToList = function(videoUrl) {
+    var parser = document.createElement('a');
+    parser.href = videoUrl;
+
+    var videoId = parser.search.split('v=')[1];
+    console.log("found videoId = " + videoId + " === " + parser.search.split('v=')[1]);
+    if ((videoId == null) || (parser.hostname.split("youtube.com").length < 2)) {
+      $scope.invalidUrl = true;
+      return false;
+    }
+    var ampersandPosition = videoId.indexOf('&');
+    if (ampersandPosition != -1) {
+      videoId = videoId.substring(0, ampersandPosition);
+    }
+
+    var returnval = youtubeService.add(videoId);
+    if (returnval == "111") {
+      $scope.videoExist = true;
+    } else if (returnval) {
+      $scope.invalidUrl = false;
+      $scope.videos = returnval;
+    } else 
+      $scope.invalidUrl = true;
+
+  }
   $scope.orderProperty = "-uploaded";
 
 }]);

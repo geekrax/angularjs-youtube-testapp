@@ -2,6 +2,13 @@
     <div class="hero-unit">
         <h1>{{welcome_message}}</h1>
     </div>
+    <div class="container">
+        <div class="span12 row">
+            Enter youtube video Url here : <input type="text" ng-model="videoUrl" placeholder="http://youtube.com/watch?v=XXXXXXXXXX"/><a class="btn btn-primary" ng-click="addToList(videoUrl);videoUrl='';" ng-show="videoUrl.length" >Add to list</a>
+            <div class="alert error" ng-show="invalidUrl">INVALID URL!</div><br>
+            <div class="alert error" ng-show="videoExist">This video already exist in your list !</div><br>
+        </div>
+    </div>
     <div ng-repeat="video in videos | orderBy:orderProperty" class="row">
     		<div class="span4">
     			<img ng-src="{{video.thumbnail.sqDefault}}" />
