@@ -1,4 +1,4 @@
-Pocket Youtube
+[Pocket Youtube](http://geekrax.github.io/pocket-youtube/)
 ===========================
 You love YouTube videos, and over the years you've been collecting their URLs in a text file.
 The problem is that now you don't know what any of them actually are!
